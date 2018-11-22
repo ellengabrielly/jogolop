@@ -13,6 +13,8 @@ var naTela = true;
 var i, j, k;
 var tempoTiro = -1;
 var vida;
+var jaulax =[], jaulay = [];
+var jaulaon = true;
 
 function preload(){
     lion = loadImage('leao.png');
@@ -23,12 +25,12 @@ function preload(){
 }
 
 function setup() {
-	createCanvas(1080, 520);
+	createCanvas(1080, 500);
     frameRate(30);
     vida=3;
     x = 20;
     y = 360;
-    resolucao = 50;
+    resolucao = 35;
     for ( i = 0; i < tirosAV; i++) {
 		tirox[i] = -50;
 		tirosBS[i] = false;  
@@ -37,20 +39,28 @@ function setup() {
 
     for (i = 0; i <= 3; i++){
         if (i == 0){
-            ye[i] = random(20, 100);
+            ye[i] = random(20, 150);
             xe[i] = random(1000,1200);
+            jaulay[i] = ye[i];
+            jaulax[i] = xe[i];
         }
         if ( i == 1){
-            ye[i] = random(150, 350);
-            xe[i] = random(1080,1200);
+            ye[i] = random(190, 260);
+            xe[i] = parseInt(random(1080,1200));
+            jaulay[i] = ye[i];
+            jaulax[i] = xe[i];
         }
         if(i == 2){
-            ye[i] = random(400, 435);
-            xe[i] = random(1080,1200);
+            ye[i] = parseInt(random(300, 390));
+            xe[i] = parseInt(random(1080,1200));
+            jaulay[i] = ye[i];
+            jaulax[i] = xe[i];
         }
         if (i == 3){
-            ye[i] = 455;
+            ye[i] = random(400, 460);
             xe[i] = random(1080,1200);
+            jaulay[i] = ye[i];
+            jaulax[i] = xe[i];
         }
     
     }
@@ -92,46 +102,38 @@ function draw() {
 //colisao do tiro com o inimigo
     //tiro1
     if (dist(tirox[0], tiroy[0], xe[0], ye[0]) < (25)) {
-        xe[0] = 1080 + random(100, 800);
-        ye[0] = random (30, 480);  
-        tirox[0] = 1180;	  
+        jaulax[0] = 100000;
+        tirox[0] = 11000;	  
     }
     if (dist(tirox[0], tiroy[0], xe[1], ye[1]) < (25)) {
-        xe[1] = 1080 + random(100, 800);
-        ye[1] = random (30, 480);  
-        tirox[0] = 1180;	  
+        jaulax[1] = 100000;
+        tirox[0] = 11000;    
     }
     if (dist(tirox[0], tiroy[0], xe[2], ye[2]) < (25)) {
-        xe[2] = 1080 + random(100, 800);
-        ye[2] = random (30, 480);  
-        tirox[0] = 1180;	  
+        jaulax[2] = 100000;
+        tirox[0] = 11000;  	  
     }
     if (dist(tirox[0], tiroy[0], xe[3], ye[3]) < (25)) {
-        xe[3] = 1080 + random(100, 800);
-        ye[3] = random (30, 480);  
-        tirox[0] = 1180;	  
+        jaulax[3] = 100000;
+        tirox[0] = 11000;  	  
     }
 
     //tiro2
     if (dist(tirox[1], tiroy[1], xe[0], ye[0]) < (25)) {
-        xe[0] = 1080 + random(100, 800);
-        ye[0] = random (30, 480);  
-        tirox[1] = 1180;	  
+        jaulax[0] = 100000;
+        tirox[1] = 11080;	 
     }
     if (dist(tirox[1], tiroy[1], xe[1], ye[1]) < (25)) {
-        xe[1] = 1080 + random(100, 800);
-        ye[1] = random (30, 480);  
-        tirox[1] = 1180;	  
+        jaulax[1] = 100000;
+        tirox[1] = 11080;  
     }
     if (dist(tirox[1], tiroy[1], xe[2], ye[2]) < (25)) {
-        xe[2] = 1080 + random(100, 800);
-        ye[2] = random (30, 480);  
-        tirox[1] = 1180;	  
+        jaulax[2] = 100000;
+        tirox[1] = 11080;	  
     }
     if (dist(tirox[1], tiroy[1], xe[3], ye[3]) < (25)) {
-        xe[3] = 1080 + random(100, 800);
-        ye[3] = random (30, 480);  
-        tirox[1] = 1180;	  
+        jaulax[3] = 100000;
+        tirox[1] = 11080;	  
     }
 
 //colisao inimigo com o personagem
@@ -166,30 +168,45 @@ function draw() {
 
     //movimentação das figuras
     for (j = 0; j<= 3; j++){
-        xe[j] = xe[j] - 5;
+        xe[j] = xe[j] - 8;
+        jaulax[j] = jaulax[j] - 8;
     }
 
 
-    //setando a posição dos animais
+    //desenhando os animais e jaulas
     for (i = 0; i<= 3; i++){
-        if(i == 0){
+        if(i == 0){ 
+            fill(168,168,168);
+            rect(jaulax[i], jaulay[i], 40, 40);
             image(lion, xe[i], ye[i], [resolucao], [resolucao]);
+           
         }
         if (i == 1){
+            fill(168,168,168);
+            rect(jaulax[i], jaulay[i], 40, 40);
             image(monkey, xe[i], ye[i], [resolucao], [resolucao]);
+            
         }
-        if(i == 2){
+        if(i == 2){  
+            fill(168,168,168);
+            rect(jaulax[i], jaulay[i], 40, 40);
             image(parot, xe[i], ye[i], [resolucao], [resolucao]);
+          
         }
         if (i == 3){
+            fill(168,168,168);
+            rect(jaulax[i], jaulay[i], 40, 40);
             image(uni, xe[i], ye[i], [resolucao], [resolucao]);
+            
         }
     }
     //reaparecimento dos animais
     for (k = 0; k<=3; k++){
         if (xe[k] < 0){
-            xe[k] = 1080 + parseInt(random(0,1000));
-            ye[k] = random(40, 430);
+            xe[k] = 1080 + parseInt(random(0,2000));
+            ye[k] = parseInt(random(40, 420));
+            jaulax[k] = xe[k];
+            jaulay[k] = ye[k];
         }
     }
 } //draw 
