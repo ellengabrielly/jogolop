@@ -27,10 +27,10 @@ var tela = 1;
 var tempo = 0;
 
 function preload() {
-    lion = loadImage('leao.png');
-    parot = loadImage('parot.png');
-    uni = loadImage('rand.png');
-    monkey = loadImage('macaco.png');
+    lion = loadImage('arara.png');
+    parot = loadImage('tartaruga.png');
+    uni = loadImage('mico.png');
+    monkey = loadImage('baleia.png');
     personagem = loadImage('personagem.png');
     scenario = loadImage('scenario.jpg');
 
@@ -283,7 +283,7 @@ function draw() {
         image(personagem, x, y, [70], [70]);
         textSize(30);
         text('Vidas: ' + vida, 20, 25);
-        text('Munição: ' + municao, 20, 50)
+        text('Chaves: ' + municao, 20, 50)
         text('Pontos: ' + pontuacao, 500, 25);
         if (keyIsDown(UP_ARROW)) {
             if (y >= 20) {
@@ -346,7 +346,7 @@ function draw() {
         image(personagem, x, y, [70], [70]);
         textSize(30);
         text('Vidas: ' + vida, 20, 25);
-        text('Munição: ' + municao, 20, 50)
+        text('Chaves: ' + municao, 20, 50)
         text('Pontos: ' + pontuacao, 500, 25);
         if (keyIsDown(UP_ARROW)) {
             if (y >= 20) {
@@ -409,7 +409,7 @@ function draw() {
         image(personagem, x, y, [70], [70]);
         textSize(30);
         text('Vidas: ' + vida, 20, 25);
-        text('Munição: ' + municao, 20, 50)
+        text('Chaves: ' + municao, 20, 50)
         text('Pontos: ' + pontuacao, 500, 25);
         if (keyIsDown(UP_ARROW)) {
             if (y >= 20) {
@@ -423,8 +423,8 @@ function draw() {
         }
         //movimentação das figuras
         for (j = 0; j <= 3; j++) {
-            xe[j] = xe[j] - 15;
-            jaulax[j] = jaulax[j] - 15;
+            xe[j] = xe[j] - 13;
+            jaulax[j] = jaulax[j] - 13;
         }
         //tiro
         if (keyIsDown(32) && tempoTiro < 0) {
@@ -474,7 +474,7 @@ function draw() {
         image(personagem, x, y, [70], [70]);
         textSize(30);
         text('Vidas: ' + vida, 20, 25);
-        text('Munição: ' + municao, 20, 50)
+        text('Chaves: ' + municao, 20, 50)
         text('Pontos: ' + pontuacao, 500, 25);
         if (keyIsDown(UP_ARROW)) {
             if (y >= 20) {
@@ -488,8 +488,8 @@ function draw() {
         }
         //movimentação das figuras
         for (j = 0; j <= 3; j++) {
-            xe[j] = xe[j] - 20;
-            jaulax[j] = jaulax[j] - 20;
+            xe[j] = xe[j] - 18;
+            jaulax[j] = jaulax[j] - 18;
         }
         //tiro
         if (keyIsDown(32) && tempoTiro < 0) {
@@ -554,3 +554,14 @@ function draw() {
         */
     }
 } //draw
+
+/*
+
+- Música
+- Imagem da chave
+- Tela de win e lose
+- Objeto pra ganhar vida extra
+- Telas educativas sobre os animais
+- Telas diferentes para os animais
+
+*/
